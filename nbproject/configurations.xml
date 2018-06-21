@@ -4,6 +4,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="Network" displayName="Network" projectFiles="true">
+        <itemPath>src/Network/BaseNetworkServer.cpp</itemPath>
+        <itemPath>src/Network/BaseNetworkServer.hpp</itemPath>
+      </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -18,6 +22,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>src/Network</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -28,6 +35,10 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -51,6 +62,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
