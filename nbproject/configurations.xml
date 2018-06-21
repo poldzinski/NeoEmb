@@ -34,6 +34,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <commandLine>-Wall -pedantic</commandLine>
+          <warningLevel>3</warningLevel>
+        </ccTool>
       </compileType>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -54,6 +59,9 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <commandLine>-Wall -pedantic</commandLine>
+          <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
