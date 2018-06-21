@@ -3,6 +3,7 @@
 // Main project file.
 //
 // 20-Jun-2018 Initial version.
+// 21-Jun-2018 Excessive namespace removed.
 //
 /////////////////////////////////////
 
@@ -18,9 +19,6 @@
 // Forward references
 // (none)
 
-namespace NeoEmb
-{
-
 /// <summary>Main entry point.</summary>
 /// <param name="argumentsCount">Number of input arguments.</param>
 /// <param name="ppArguments">Input arguments.</param>
@@ -31,5 +29,3 @@ int main( int argumentsCount, char** ppArguments )
     
     return 0;
 }
-
-} // namespace NoeEmb
