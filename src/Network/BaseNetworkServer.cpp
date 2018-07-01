@@ -21,28 +21,19 @@
 namespace Network
 {
 
-BaseNetworkServer::BaseNetworkServer()
-    : m_pReadCallback( nullptr )
-    , m_Bound( false )
-{
-}
-
 BaseNetworkServer::~BaseNetworkServer()
 {
     Disconnect();
 }
 
-bool BaseNetworkServer::IsConnected()
+const bool BaseNetworkServer::IsConnected()
 {
     return m_Bound;
 }
 
-bool BaseNetworkServer::Bind( uint16_t serverPort, 
-                              ServerReadCallback* pReadCallback,
-                              bool disconnect )
+bool BaseNetworkServer::Bind( const uint16_t serverPort, 
+                              const bool disconnect )
 {
-    m_pReadCallback = nullptr;
-
     if ( disconnect == true )
     {
         Disconnect();
@@ -56,7 +47,6 @@ bool BaseNetworkServer::Bind( uint16_t serverPort,
     if ( TryToBind( serverPort ) == true )
     {
         m_Bound = true;
-        m_pReadCallback = pReadCallback;
         return true;
     }
 
@@ -74,26 +64,49 @@ bool BaseNetworkServer::Disconnect()
     return TryToDisconnect();
 }
 
-uint32_t BaseNetworkServer::SendPacket( IPEndPoint client, 
-                                        uint8_t* pBuffer, 
-                                        uint32_t bufferSize )
+const uint32_t BaseNetworkServer::SendPacket( const IPEndPoint client, 
+                                              const uint8_t* const pBuffer, 
+                                              const uint32_t bufferSize )
 {
     if ( m_Bound == false )
     {
-        return 0;
+        return 0U;
     }
 
     return TryToSendPacket( client, pBuffer, bufferSize );
 }
 
-BaseNetworkServer::ServerReadCallback* BaseNetworkServer::GetReadCallback()
+template<>
+const BaseNetworkServer::AcceptClientCallback BaseNetworkServer::GetCallback()
+{
+    return m_pAcceptCallback;
+}
+
+template<>
+const BaseNetworkServer::ClientReadCallback BaseNetworkServer::GetCallback()
 {
     return m_pReadCallback;
 }
 
-void BaseNetworkServer::SetReadCallback( ServerReadCallback* pReadCallback )
+template<>
+const BaseNetworkServer::DisconnectClientCallback BaseNetworkServer::GetCallback()
+{
+    return m_pDisconnectCallback;
+}
+
+void BaseNetworkServer::SetCallback( AcceptClientCallback pAcceptCallback )
+{
+    m_pAcceptCallback = pAcceptCallback;
+}
+
+void BaseNetworkServer::SetCallback( ClientReadCallback pReadCallback )
 {
     m_pReadCallback = pReadCallback;
+}
+
+void BaseNetworkServer::SetCallback( DisconnectClientCallback pDisconnectCallback )
+{
+    m_pDisconnectCallback = pDisconnectCallback;
 }
 
 }  // namespace Network
