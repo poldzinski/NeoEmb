@@ -7,6 +7,8 @@
       <logicalFolder name="Network" displayName="Network" projectFiles="true">
         <itemPath>src/Network/BaseNetworkServer.cpp</itemPath>
         <itemPath>src/Network/BaseNetworkServer.hpp</itemPath>
+        <itemPath>src/Network/TcpNetworkServer.cpp</itemPath>
+        <itemPath>src/Network/TcpNetworkServer.hpp</itemPath>
       </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
@@ -14,6 +16,12 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="TcpNetworkServer tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>src_test/Network/TcpNetworkServerTests.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -36,15 +44,46 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
-          <commandLine>-Wall -pedantic</commandLine>
+          <commandLine>-pthread -Wall</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
+      <folder path="TestFiles">
+        <ccTool>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Network/TcpNetworkServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/TcpNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src_test/Network/TcpNetworkServerTests.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -70,11 +109,35 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/Network/TcpNetworkServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/TcpNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src_test/Network/TcpNetworkServerTests.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
     </conf>
   </confs>
