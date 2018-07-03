@@ -11,6 +11,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>src/Network</sourceRootElem>
+                <sourceRootElem>src/Core</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

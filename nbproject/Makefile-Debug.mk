@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/Core/GeneralState.o \
+	${OBJECTDIR}/src/Core/NetworkThread.o \
 	${OBJECTDIR}/src/Network/BaseNetworkServer.o \
 	${OBJECTDIR}/src/Network/TcpNetworkServer.o \
 	${OBJECTDIR}/src/main.o
@@ -74,6 +76,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/neoemb: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/neoemb ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/src/Core/GeneralState.o: src/Core/GeneralState.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Core
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/GeneralState.o src/Core/GeneralState.cpp
+
+${OBJECTDIR}/src/Core/NetworkThread.o: src/Core/NetworkThread.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Core
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/NetworkThread.o src/Core/NetworkThread.cpp
+
 ${OBJECTDIR}/src/Network/BaseNetworkServer.o: src/Network/BaseNetworkServer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Network
 	${RM} "$@.d"
@@ -106,6 +118,32 @@ ${TESTDIR}/src_test/Network/TcpNetworkServerTests.o: src_test/Network/TcpNetwork
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -Isrc -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/src_test/Network/TcpNetworkServerTests.o src_test/Network/TcpNetworkServerTests.cpp
 
+
+${OBJECTDIR}/src/Core/GeneralState_nomain.o: ${OBJECTDIR}/src/Core/GeneralState.o src/Core/GeneralState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Core
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Core/GeneralState.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -Werror -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/GeneralState_nomain.o src/Core/GeneralState.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Core/GeneralState.o ${OBJECTDIR}/src/Core/GeneralState_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Core/NetworkThread_nomain.o: ${OBJECTDIR}/src/Core/NetworkThread.o src/Core/NetworkThread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Core
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Core/NetworkThread.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -Werror -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/NetworkThread_nomain.o src/Core/NetworkThread.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Core/NetworkThread.o ${OBJECTDIR}/src/Core/NetworkThread_nomain.o;\
+	fi
 
 ${OBJECTDIR}/src/Network/BaseNetworkServer_nomain.o: ${OBJECTDIR}/src/Network/BaseNetworkServer.o src/Network/BaseNetworkServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Network

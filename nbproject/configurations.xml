@@ -4,6 +4,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="Core" displayName="Core" projectFiles="true">
+        <itemPath>src/Core/GeneralState.cpp</itemPath>
+        <itemPath>src/Core/GeneralState.hpp</itemPath>
+        <itemPath>src/Core/NetworkThread.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="Network" displayName="Network" projectFiles="true">
         <itemPath>src/Network/BaseNetworkServer.cpp</itemPath>
         <itemPath>src/Network/BaseNetworkServer.hpp</itemPath>
@@ -32,6 +37,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src/Network</Elem>
+    <Elem>src/Core</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -70,6 +76,12 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
+      <item path="src/Core/GeneralState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/GeneralState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
@@ -124,6 +136,12 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
+      <item path="src/Core/GeneralState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/GeneralState.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
