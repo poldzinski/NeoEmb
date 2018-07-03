@@ -6,6 +6,9 @@
 //
 /////////////////////////////////////
 
+#ifndef TCP_NETWORK_SERVER_HPP
+#define TCP_NETWORK_SERVER_HPP
+
 // System includes
 #include <vector>
 #include <thread>
@@ -149,3 +152,5 @@ private:
 };
 
 } // namespace Network
+
+#endif  // TCP_NETWORK_SERVER_HPP

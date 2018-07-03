@@ -7,6 +7,9 @@
 //
 /////////////////////////////////////
 
+#ifndef BASE_NETWORK_SERVER_HPP
+#define BASE_NETWORK_SERVER_HPP
+
 // System includes
 #include <cstdint>
 
@@ -145,3 +148,5 @@ protected:
 };
 
 }  // namespace Network
+
+#endif // BASE_NETWORK_SERVER_HPP
