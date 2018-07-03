@@ -66,7 +66,7 @@ static void DisconnectClientCallback( const Network::BaseNetworkServer* const,
     clientDisconnected = true;
 }
 
-/// <summary>Test of TCP connections.</summary>
+// Test of TCP connections.
 static void ConnectionTest()
 {
     Network::TcpNetworkServer* server = new Network::TcpNetworkServer();
