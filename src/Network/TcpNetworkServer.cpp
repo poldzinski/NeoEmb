@@ -221,6 +221,7 @@ void TcpNetworkServer::ListeningThread( const ServerSocket serverSocket )
                                         poll_settings,
                                         settingIndex,
                                         clientsConnected );
+                poll_settings[ settingIndex ].revents = 0;
             }
             while ( ( proceed == true ) && ( settingIndex <= clientsConnected ) );
         }
