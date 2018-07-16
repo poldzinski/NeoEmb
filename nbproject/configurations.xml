@@ -36,8 +36,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>src/Network</Elem>
-    <Elem>src/Core</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -50,7 +49,10 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
-          <commandLine>-pthread -Wall</commandLine>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+          <commandLine>-Wall -pthread</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
@@ -111,7 +113,10 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <standard>8</standard>
-          <commandLine>-Wall -pedantic</commandLine>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
+          <commandLine>-Wall -pthread</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
