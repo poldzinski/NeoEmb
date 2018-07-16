@@ -29,7 +29,10 @@ static bool shutDown = false;
 bool AcceptClientCallback( const Network::BaseNetworkServer* const pServer,
                            const Network::BaseNetworkServer::IPEndPoint client )
 {
-    std::cout <<  client.ipAddress << " connected..." << std::endl;
+    std::cout <<  ( client.ipAddress >> 24 ) & 0xff << "." <<
+                  ( client.ipAddress >> 16 ) & 0xff << "." <<
+                  ( client.ipAddress >> 8 ) & 0xff << "." <<
+                  ( client.ipAddress >> 0 ) & 0xff << " connected..." << std::endl;
     return true;
 }
 
@@ -51,7 +54,10 @@ void ClientReadCallback( const Network::BaseNetworkServer* const pServer,
 void DisconnectClientCallback( const Network::BaseNetworkServer* const pServer,
                                const Network::BaseNetworkServer::IPEndPoint client )
 {
-    
+    std::cout <<  ( client.ipAddress >> 24 ) & 0xff << "." <<
+                  ( client.ipAddress >> 16 ) & 0xff << "." <<
+                  ( client.ipAddress >> 8 ) & 0xff << "." <<
+                  ( client.ipAddress >> 0 ) & 0xff << " disconnected..." << std::endl;
 }
     
 /// <summary>Thread for network processing.</summary>
