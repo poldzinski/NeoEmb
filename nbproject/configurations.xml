@@ -52,7 +52,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-Wall -pthread</commandLine>
+          <commandLine>-Wall -pthread -std=c+11</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
@@ -116,7 +116,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-Wall -pthread</commandLine>
+          <commandLine>-Wall -pthread -std=c+11</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>

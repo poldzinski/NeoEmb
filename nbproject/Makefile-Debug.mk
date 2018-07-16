@@ -56,8 +56,8 @@ TESTOBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -pthread
-CXXFLAGS=-Wall -pthread
+CCFLAGS=-Wall -pthread -std=c+11
+CXXFLAGS=-Wall -pthread -std=c+11
 
 # Fortran Compiler Flags
 FFLAGS=
