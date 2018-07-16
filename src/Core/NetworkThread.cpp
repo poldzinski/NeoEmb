@@ -8,6 +8,7 @@
 
 // System includes
 #include <iostream>
+#include <cstring>
 #include <cstdint>
 
 // C++ includes
