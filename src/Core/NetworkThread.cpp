@@ -29,14 +29,14 @@ static bool shutDown = false;
 bool AcceptClientCallback( const Network::BaseNetworkServer* const pServer,
                            const Network::BaseNetworkServer::IPEndPoint client )
 {
-    std::cout << ( ( client.ipAddress >> 24 ) & 0xff );
-    std::cout << ".";
-    std::cout << ( ( client.ipAddress >> 16 ) & 0xff );
+    std::cout << ( ( client.ipAddress >> 0 ) & 0xff );
     std::cout << ".";
     std::cout << ( ( client.ipAddress >> 8 ) & 0xff );
     std::cout << ".";
-    std::cout << ( ( client.ipAddress >> 0 ) & 0xff );
-    std::cout << " connected...";
+    std::cout << ( ( client.ipAddress >> 16 ) & 0xff );
+    std::cout << ".";
+    std::cout << ( ( client.ipAddress >> 24 ) & 0xff );
+    std::cout << " connected..." << std::endl;
     return true;
 }
 
@@ -58,14 +58,14 @@ void ClientReadCallback( const Network::BaseNetworkServer* const pServer,
 void DisconnectClientCallback( const Network::BaseNetworkServer* const pServer,
                                const Network::BaseNetworkServer::IPEndPoint client )
 {
-    std::cout << ( ( client.ipAddress >> 24 ) & 0xff );
-    std::cout << ".";
-    std::cout << ( ( client.ipAddress >> 16 ) & 0xff );
+    std::cout << ( ( client.ipAddress >> 0 ) & 0xff );
     std::cout << ".";
     std::cout << ( ( client.ipAddress >> 8 ) & 0xff );
     std::cout << ".";
-    std::cout << ( ( client.ipAddress >> 0 ) & 0xff );
-    std::cout << " disconnected...";
+    std::cout << ( ( client.ipAddress >> 16 ) & 0xff );
+    std::cout << ".";
+    std::cout << ( ( client.ipAddress >> 24 ) & 0xff );
+    std::cout << " disconnected..." << std::endl;
 }
     
 /// <summary>Thread for network processing.</summary>
