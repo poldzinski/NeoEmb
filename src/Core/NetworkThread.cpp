@@ -7,6 +7,7 @@
 /////////////////////////////////////
 
 // System includes
+#include <iostream>
 #include <cstdint>
 
 // C++ includes
