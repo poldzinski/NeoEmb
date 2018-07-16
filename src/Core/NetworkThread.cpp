@@ -29,6 +29,7 @@ static bool shutDown = false;
 bool AcceptClientCallback( const Network::BaseNetworkServer* const pServer,
                            const Network::BaseNetworkServer::IPEndPoint client )
 {
+    std::cout <<  client.ipAddress << " connected..." << std::endl;
     return true;
 }
 
