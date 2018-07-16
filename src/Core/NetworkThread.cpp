@@ -39,9 +39,9 @@ void ClientReadCallback( const Network::BaseNetworkServer* const pServer,
 {
     const char* pQuitCommand = "QUIT";
     
-    std::cout << static_cast< char* >( pBuffer ) << std::endl;
+    std::cout << pBuffer << std::endl;
     if ( ( bufferSize == strlen( pQuitCommand ) ) &&
-         ( strcmp( pBuffer, pQuitCommand ) == 0 ) )
+         ( memcmp( pBuffer, pQuitCommand, bufferSize ) == 0 ) )
     {
         shutDown = true;
     }
