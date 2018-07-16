@@ -10,7 +10,7 @@
 #define GENERALSTATE_HPP
 
 // System includes
-// (none)
+#include <cstdint>
 
 // C++ includes
 // (none)
@@ -28,6 +28,9 @@ class GeneralState
 {
 
 public:
+    
+    /// <summary>Port number for network communication.</summary>
+    static const uint16_t TCP_SERVER_PORT = 3000;
     
     /// <summary>Gets the status of the global shutdown.</summary>
     /// <returns>Status of the global shutdown.</returns>

@@ -10,7 +10,7 @@
 // (none)
 
 // C++ includes
-#include "GeneralState.hpp"
+#include "Core/GeneralState.hpp"
 
 // C includes
 // (none)
