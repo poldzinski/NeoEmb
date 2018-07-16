@@ -42,7 +42,6 @@ int main( int, char** )
     
     while ( pGeneralState->IsGlobalShutdown() == false )
     {
-        pGeneralState->SetGlobalShutdown( true );
     }
     
     std::cout << "Closing threads..." << std::endl;
