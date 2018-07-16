@@ -10,7 +10,7 @@
 // (none)
 
 // C++ includes
-#include "TcpNetworkServer.hpp"
+#include "Network/TcpNetworkServer.hpp"
 
 // C includes
 #include <unistd.h>

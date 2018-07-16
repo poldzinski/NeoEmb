@@ -10,7 +10,7 @@
 // (none)
 
 // C++ includes
-#include "BaseNetworkServer.hpp"
+#include "Network/BaseNetworkServer.hpp"
 
 // C includes
 // (none)

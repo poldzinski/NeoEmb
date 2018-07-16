@@ -14,7 +14,7 @@
 #include <thread>
 
 // C++ includes
-#include "BaseNetworkServer.hpp"
+#include "Network/BaseNetworkServer.hpp"
 
 // C includes
 #include <sys/poll.h>
