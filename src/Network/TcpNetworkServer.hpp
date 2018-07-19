@@ -3,6 +3,8 @@
 // TCP network server.
 //
 // 21-Jun-2018 Initial version.
+// 17-Jul-2018 Method for getting amount of clients added.
+// 19-Jul-2018 Disconneting clients fixed.
 //
 /////////////////////////////////////
 
@@ -61,6 +63,10 @@ public:
         bool* pServerDown;
     };
     
+    /// <summary>Gets the amount of clients.</summary>
+    /// <returns>The amount of clients.</returns>
+    virtual uint32_t GetClientsCount() const;
+    
     /// <summary>Disconnects a client.</summary>
     /// <param name="client">Client.</param>
     void DisconnectClient( const ClientSocket client );
@@ -103,7 +109,7 @@ private:
     static bool ReadDataFromClient( const ServerSocket serverSocket,
                                     struct pollfd* pPollSettings,
                                     const uint32_t settingIndex,
-                                    const uint32_t clientsConnected );
+                                    uint32_t& clientsConnected );
     
     /// <summary>Processes an event.</summary>
     /// <param name="serverSocket">Server.</param>
@@ -139,7 +145,7 @@ private:
                                             const uint32_t size );
 
     /// <summary>Maximum number of clients.</summary>
-    static const uint32_t MAX_CLIENTS_COUNT = 2U;
+    static const uint32_t MAX_CLIENTS_COUNT = 8U;
     /// <summary>Connected clients.</summary>
     std::vector< ClientSocket > m_Clients;
     /// <summary>Server's state.</summary>

@@ -4,6 +4,8 @@
 //
 // 20-Jun-2018 Initial version.
 // 01-Jul-2018 Methods for callbacks added.
+// 17-Jul-2018 Method for getting amount of clients added.
+// 19-Jul-2018 Disconneting clients fixed.
 //
 /////////////////////////////////////
 
@@ -115,6 +117,10 @@ public:
     /// <summary>Sets read operations callback.</summary>
     /// <param name="pCallback">Callback for accept operations.</param>
     void SetCallback( DisconnectClientCallback pCallback );
+
+    /// <summary>Gets the amount of clients.</summary>
+    /// <returns>The amount of clients.</returns>
+    virtual uint32_t GetClientsCount() const = 0;
 
 protected:
     

@@ -3,6 +3,8 @@
 // TCP network server.
 //
 // 21-Jun-2018 Initial version.
+// 17-Jul-2018 Method for getting amount of clients added.
+// 19-Jul-2018 Disconneting clients fixed.
 //
 /////////////////////////////////////
 
@@ -30,6 +32,11 @@ namespace Network
 {
 
 // Public methods.
+
+uint32_t TcpNetworkServer::GetClientsCount() const
+{
+    return m_Clients.size();
+}
     
 void TcpNetworkServer::DisconnectClient( const ClientSocket client )
 {
@@ -102,15 +109,15 @@ void TcpNetworkServer::RemoveClient( ServerSocket serverSocket,
                                      const uint32_t settingIndex,
                                      const uint32_t clientsConnected )
 {
-    std::vector< ClientSocket > clients = *serverSocket.pClients;
+    std::vector< ClientSocket >* pClients = serverSocket.pClients;
     
-    clients.erase( clients.begin() + settingIndex - 1 );
-
     if ( serverSocket.pDisconnectCallback != nullptr )
     {
         serverSocket.pDisconnectCallback( serverSocket.pServer, 
-                                          clients[ settingIndex - 1 ].endPoint );
+                                          ( *pClients )[ settingIndex - 1 ].endPoint );
     }
+
+    pClients->erase( pClients->begin() + settingIndex - 1 );
     memcpy( &pPollSettings[ settingIndex ],
             &pPollSettings[ settingIndex + 1U ],
             ( clientsConnected - settingIndex ) * sizeof( pPollSettings[ 0U ] ) );
@@ -136,7 +143,7 @@ void TcpNetworkServer::ReadDataFromSocket( ServerSocket serverSocket,
 bool TcpNetworkServer::ReadDataFromClient( const ServerSocket serverSocket,
                                            struct pollfd* pPollSettings,
                                            const uint32_t settingIndex,
-                                           const uint32_t clientsConnected )
+                                           uint32_t& clientsConnected )
 {
     struct pollfd& rSetting = pPollSettings[ settingIndex ];
     bool clientRemoved = false;
@@ -145,8 +152,11 @@ bool TcpNetworkServer::ReadDataFromClient( const ServerSocket serverSocket,
     
     if ( dataRead == 0 )
     {
+        close( rSetting.fd );
         RemoveClient( serverSocket, pPollSettings, settingIndex, clientsConnected );
         clientRemoved = true;
+        --clientsConnected;
+        memset( &rSetting, 0, sizeof( pollfd ) );
     }
     else if ( dataRead <= sizeof( buffer ) )
     {
@@ -221,7 +231,6 @@ void TcpNetworkServer::ListeningThread( const ServerSocket serverSocket )
                                         poll_settings,
                                         settingIndex,
                                         clientsConnected );
-                poll_settings[ settingIndex ].revents = 0;
             }
             while ( ( proceed == true ) && ( settingIndex <= clientsConnected ) );
         }
