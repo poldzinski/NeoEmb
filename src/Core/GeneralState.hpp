@@ -48,4 +48,4 @@ private:
 
 }  // namespace Core
 
-#endif /* GENERALSTATE_HPP */
+#endif // GENERALSTATE_HPP
