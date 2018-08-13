@@ -8,10 +8,21 @@
         <itemPath>src/Core/GeneralState.cpp</itemPath>
         <itemPath>src/Core/GeneralState.hpp</itemPath>
         <itemPath>src/Core/NetworkThread.cpp</itemPath>
+        <itemPath>src/Core/NetworkThread.hpp</itemPath>
+        <itemPath>src/Core/Thread.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="Network" displayName="Network" projectFiles="true">
+        <itemPath>src/Network/AcceptClientCallback.cpp</itemPath>
+        <itemPath>src/Network/AcceptClientCallback.hpp</itemPath>
         <itemPath>src/Network/BaseNetworkServer.cpp</itemPath>
         <itemPath>src/Network/BaseNetworkServer.hpp</itemPath>
+        <itemPath>src/Network/BaseServerCallback.cpp</itemPath>
+        <itemPath>src/Network/BaseServerCallback.hpp</itemPath>
+        <itemPath>src/Network/Callback.hpp</itemPath>
+        <itemPath>src/Network/ClientReadCallback.cpp</itemPath>
+        <itemPath>src/Network/ClientReadCallback.hpp</itemPath>
+        <itemPath>src/Network/DisconnectClientCallback.cpp</itemPath>
+        <itemPath>src/Network/DisconnectClientCallback.hpp</itemPath>
         <itemPath>src/Network/TcpNetworkServer.cpp</itemPath>
         <itemPath>src/Network/TcpNetworkServer.hpp</itemPath>
       </logicalFolder>
@@ -84,9 +95,43 @@
       </item>
       <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Core/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Thread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/AcceptClientCallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Network/AcceptClientCallback.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/BaseServerCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/BaseServerCallback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/Callback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/ClientReadCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/ClientReadCallback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/DisconnectClientCallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Network/DisconnectClientCallback.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/Network/TcpNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -147,9 +192,43 @@
       </item>
       <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/Core/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Thread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/AcceptClientCallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Network/AcceptClientCallback.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/Network/BaseNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Network/BaseNetworkServer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/BaseServerCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/BaseServerCallback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/Callback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/ClientReadCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Network/ClientReadCallback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Network/DisconnectClientCallback.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Network/DisconnectClientCallback.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="src/Network/TcpNetworkServer.cpp" ex="false" tool="1" flavor2="0">
       </item>
