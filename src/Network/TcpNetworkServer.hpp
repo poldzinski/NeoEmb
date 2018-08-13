@@ -50,11 +50,11 @@ public:
         /// <summary>Parent server.</summary>
         TcpNetworkServer* pServer;
         /// <summary>Callback for accepting incoming connections.</summary>
-        AcceptClientCallback pAcceptCallback;
+        AcceptClientCallback* pAcceptCallback;
         /// <summary>Callback for reading data from clients.</summary>
-        ClientReadCallback pReadCallback;
+        ClientReadCallback* pReadCallback;
         /// <summary>Callback for disconnecting clients.</summary>
-        DisconnectClientCallback pDisconnectCallback;
+        DisconnectClientCallback* pDisconnectCallback;
         /// <summary>List of clients.</summary>
         std::vector< ClientSocket >* pClients;
         /// <summary>Server's socket descriptor.</summary>

@@ -22,7 +22,12 @@
 // (none)
 
 // Forward references
-// (none)
+namespace Network
+{
+class AcceptClientCallback;
+class ClientReadCallback;
+class DisconnectClientCallback;
+}
 
 namespace Network
 {
@@ -42,37 +47,6 @@ public:
         /// <summary>IP address.</summary>
         uint32_t ipAddress;
     };
-    
-    typedef
-        /// <summary>Callback for server's reading operations.</summary>
-        /// <param name="pServer">Server.</param>
-        /// <param name="client">Connected client.</param>
-        /// <param name="pBuffer">Data buffer.</param>
-        /// <param name="bufferSize">Buffer size.</param>
-        /// <returns>True if client may be accepted, false otherwise.</returns>
-        bool ( *AcceptClientCallback )( const BaseNetworkServer* const pServer,
-                                        const IPEndPoint client );
-
-    typedef
-        /// <summary>Callback for server's reading operations.</summary>
-        /// <param name="pServer">Server.</param>
-        /// <param name="client">Connected client.</param>
-        /// <param name="pBuffer">Data buffer.</param>
-        /// <param name="bufferSize">Buffer size.</param>
-        void ( *ClientReadCallback )( const BaseNetworkServer* const pServer,
-                                      const IPEndPoint client,
-                                      const uint8_t* const pBuffer,
-                                      const uint32_t bufferSize );
-
-    typedef
-        /// <summary>Callback for server's reading operations.</summary>
-        /// <param name="pServer">Server.</param>
-        /// <param name="client">Connected client.</param>
-        /// <param name="pBuffer">Data buffer.</param>
-        /// <param name="bufferSize">Buffer size.</param>
-        void ( *DisconnectClientCallback )( const BaseNetworkServer* const pServer,
-                                            const IPEndPoint client );
-
     
     /// <summary>Destructor.</summary>
     virtual ~BaseNetworkServer();
@@ -103,20 +77,20 @@ public:
 
     /// <summary>Returns current read operations callback.</summary>
     /// <returns>Callback.</returns>
-    template< typename Callback >
-    const Callback GetCallback();
+    template< typename CALLBACK >
+    const CALLBACK* GetCallback();
 
     /// <summary>Sets read operations callback.</summary>
     /// <param name="pCallback">Callback for accept operations.</param>
-    void SetCallback( AcceptClientCallback pCallback );
+    void SetCallback( AcceptClientCallback* pCallback );
 
     /// <summary>Sets read operations callback.</summary>
     /// <param name="pCallback">Callback for accept operations.</param>
-    void SetCallback( ClientReadCallback pCallback );
+    void SetCallback( ClientReadCallback* pCallback );
 
     /// <summary>Sets read operations callback.</summary>
     /// <param name="pCallback">Callback for accept operations.</param>
-    void SetCallback( DisconnectClientCallback pCallback );
+    void SetCallback( DisconnectClientCallback* pCallback );
 
     /// <summary>Gets the amount of clients.</summary>
     /// <returns>The amount of clients.</returns>
@@ -142,12 +116,12 @@ protected:
                                             const uint8_t* const pBuffer, 
                                             const uint32_t size ) = 0;
     
+    /// <summary>Callback to accept clients.</summary>
+    AcceptClientCallback* m_pAcceptCallback = nullptr;
     /// <summary>Callback to handle read operations.</summary>
-    ClientReadCallback m_pReadCallback = nullptr;
+    ClientReadCallback* m_pReadCallback = nullptr;
     /// <summary>Callback to handle read operations.</summary>
-    AcceptClientCallback m_pAcceptCallback = nullptr;
-    /// <summary>Callback to handle read operations.</summary>
-    DisconnectClientCallback m_pDisconnectCallback = nullptr;
+    DisconnectClientCallback* m_pDisconnectCallback = nullptr;
     /// <summary>Keeps current connection state.</summary>
     bool m_Bound = false;
 

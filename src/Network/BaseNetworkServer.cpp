@@ -77,34 +77,34 @@ const uint32_t BaseNetworkServer::SendPacket( const IPEndPoint client,
 }
 
 template<>
-const BaseNetworkServer::AcceptClientCallback BaseNetworkServer::GetCallback()
+const AcceptClientCallback* BaseNetworkServer::GetCallback()
 {
     return m_pAcceptCallback;
 }
 
 template<>
-const BaseNetworkServer::ClientReadCallback BaseNetworkServer::GetCallback()
+const ClientReadCallback* BaseNetworkServer::GetCallback()
 {
     return m_pReadCallback;
 }
 
 template<>
-const BaseNetworkServer::DisconnectClientCallback BaseNetworkServer::GetCallback()
+const DisconnectClientCallback* BaseNetworkServer::GetCallback()
 {
     return m_pDisconnectCallback;
 }
 
-void BaseNetworkServer::SetCallback( AcceptClientCallback pAcceptCallback )
+void BaseNetworkServer::SetCallback( AcceptClientCallback* pAcceptCallback )
 {
     m_pAcceptCallback = pAcceptCallback;
 }
 
-void BaseNetworkServer::SetCallback( ClientReadCallback pReadCallback )
+void BaseNetworkServer::SetCallback( ClientReadCallback* pReadCallback )
 {
     m_pReadCallback = pReadCallback;
 }
 
-void BaseNetworkServer::SetCallback( DisconnectClientCallback pDisconnectCallback )
+void BaseNetworkServer::SetCallback( DisconnectClientCallback* pDisconnectCallback )
 {
     m_pDisconnectCallback = pDisconnectCallback;
 }

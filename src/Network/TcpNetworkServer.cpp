@@ -13,6 +13,9 @@
 
 // C++ includes
 #include "Network/TcpNetworkServer.hpp"
+#include "Network/AcceptClientCallback.hpp"
+#include "Network/ClientReadCallback.hpp"
+#include "Network/DisconnectClientCallback.hpp"
 
 // C includes
 #include <unistd.h>
@@ -49,7 +52,9 @@ void TcpNetworkServer::DisconnectClient( const ClientSocket client )
 
             if ( m_pDisconnectCallback != nullptr )
             {
-                m_pDisconnectCallback( this, client.endPoint );
+                m_pDisconnectCallback->SetServer( this );
+                m_pDisconnectCallback->SetClient( client.endPoint );
+                m_pDisconnectCallback->GetCallback()();
             }
             
             return;
@@ -88,8 +93,10 @@ bool TcpNetworkServer::AddNewClient( ServerSocket serverSocket,
 
     if ( serverSocket.pAcceptCallback != nullptr )
     {
-        clientAccepted = serverSocket.pAcceptCallback( serverSocket.pServer, 
-                                                       client.endPoint );
+        serverSocket.pAcceptCallback->SetServer( serverSocket.pServer );
+        serverSocket.pAcceptCallback->SetClient( client.endPoint );
+        serverSocket.pAcceptCallback->GetCallback()();
+        clientAccepted = serverSocket.pAcceptCallback->IsClientAccepted();
     }
 
     if ( clientAccepted == true )
@@ -113,8 +120,9 @@ void TcpNetworkServer::RemoveClient( ServerSocket serverSocket,
     
     if ( serverSocket.pDisconnectCallback != nullptr )
     {
-        serverSocket.pDisconnectCallback( serverSocket.pServer, 
-                                          ( *pClients )[ settingIndex - 1 ].endPoint );
+        serverSocket.pDisconnectCallback->SetServer( serverSocket.pServer );
+        serverSocket.pDisconnectCallback->SetClient( ( *pClients )[ settingIndex - 1 ].endPoint );
+        serverSocket.pDisconnectCallback->GetCallback()();
     }
 
     pClients->erase( pClients->begin() + settingIndex - 1 );
@@ -133,10 +141,12 @@ void TcpNetworkServer::ReadDataFromSocket( ServerSocket serverSocket,
     if ( serverSocket.pReadCallback != nullptr )
     {
         std::vector< ClientSocket > clients = *serverSocket.pClients;
-        serverSocket.pReadCallback( serverSocket.pServer,
-                                    clients[ clientIndex ].endPoint,
-                                    buffer,
-                                    dataRead );
+        
+        serverSocket.pReadCallback->SetServer( serverSocket.pServer );
+        serverSocket.pReadCallback->SetClient( clients[ clientIndex ].endPoint );
+        serverSocket.pReadCallback->SetBufferSize( dataRead );
+        serverSocket.pReadCallback->SetBuffer( buffer );
+        serverSocket.pReadCallback->GetCallback()();
     }
 }
     
@@ -163,10 +173,12 @@ bool TcpNetworkServer::ReadDataFromClient( const ServerSocket serverSocket,
         if ( serverSocket.pReadCallback != nullptr )
         {
             std::vector< ClientSocket > clients = *serverSocket.pClients;
-            serverSocket.pReadCallback( serverSocket.pServer,
-                                        clients[ settingIndex - 1 ].endPoint,
-                                        buffer,
-                                        dataRead );
+            
+            serverSocket.pReadCallback->SetServer( serverSocket.pServer );
+            serverSocket.pReadCallback->SetClient( clients[ settingIndex - 1 ].endPoint );
+            serverSocket.pReadCallback->SetBufferSize( READ_BUFFER_SIZE );
+            serverSocket.pReadCallback->SetBuffer( buffer );
+            serverSocket.pReadCallback->GetCallback()();
         }
     }
 
