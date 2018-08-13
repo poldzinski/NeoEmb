@@ -37,7 +37,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/Core/GeneralState.o \
 	${OBJECTDIR}/src/Core/NetworkThread.o \
+	${OBJECTDIR}/src/Network/AcceptClientCallback.o \
 	${OBJECTDIR}/src/Network/BaseNetworkServer.o \
+	${OBJECTDIR}/src/Network/BaseServerCallback.o \
+	${OBJECTDIR}/src/Network/ClientReadCallback.o \
+	${OBJECTDIR}/src/Network/DisconnectClientCallback.o \
 	${OBJECTDIR}/src/Network/TcpNetworkServer.o \
 	${OBJECTDIR}/src/main.o
 
@@ -86,10 +90,30 @@ ${OBJECTDIR}/src/Core/NetworkThread.o: src/Core/NetworkThread.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/NetworkThread.o src/Core/NetworkThread.cpp
 
+${OBJECTDIR}/src/Network/AcceptClientCallback.o: src/Network/AcceptClientCallback.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/AcceptClientCallback.o src/Network/AcceptClientCallback.cpp
+
 ${OBJECTDIR}/src/Network/BaseNetworkServer.o: src/Network/BaseNetworkServer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Network
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/BaseNetworkServer.o src/Network/BaseNetworkServer.cpp
+
+${OBJECTDIR}/src/Network/BaseServerCallback.o: src/Network/BaseServerCallback.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/BaseServerCallback.o src/Network/BaseServerCallback.cpp
+
+${OBJECTDIR}/src/Network/ClientReadCallback.o: src/Network/ClientReadCallback.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/ClientReadCallback.o src/Network/ClientReadCallback.cpp
+
+${OBJECTDIR}/src/Network/DisconnectClientCallback.o: src/Network/DisconnectClientCallback.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/DisconnectClientCallback.o src/Network/DisconnectClientCallback.cpp
 
 ${OBJECTDIR}/src/Network/TcpNetworkServer.o: src/Network/TcpNetworkServer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Network
@@ -145,6 +169,19 @@ ${OBJECTDIR}/src/Core/NetworkThread_nomain.o: ${OBJECTDIR}/src/Core/NetworkThrea
 	    ${CP} ${OBJECTDIR}/src/Core/NetworkThread.o ${OBJECTDIR}/src/Core/NetworkThread_nomain.o;\
 	fi
 
+${OBJECTDIR}/src/Network/AcceptClientCallback_nomain.o: ${OBJECTDIR}/src/Network/AcceptClientCallback.o src/Network/AcceptClientCallback.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Network/AcceptClientCallback.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/AcceptClientCallback_nomain.o src/Network/AcceptClientCallback.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Network/AcceptClientCallback.o ${OBJECTDIR}/src/Network/AcceptClientCallback_nomain.o;\
+	fi
+
 ${OBJECTDIR}/src/Network/BaseNetworkServer_nomain.o: ${OBJECTDIR}/src/Network/BaseNetworkServer.o src/Network/BaseNetworkServer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/Network
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Network/BaseNetworkServer.o`; \
@@ -156,6 +193,45 @@ ${OBJECTDIR}/src/Network/BaseNetworkServer_nomain.o: ${OBJECTDIR}/src/Network/Ba
 	    $(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/BaseNetworkServer_nomain.o src/Network/BaseNetworkServer.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/Network/BaseNetworkServer.o ${OBJECTDIR}/src/Network/BaseNetworkServer_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Network/BaseServerCallback_nomain.o: ${OBJECTDIR}/src/Network/BaseServerCallback.o src/Network/BaseServerCallback.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Network/BaseServerCallback.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/BaseServerCallback_nomain.o src/Network/BaseServerCallback.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Network/BaseServerCallback.o ${OBJECTDIR}/src/Network/BaseServerCallback_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Network/ClientReadCallback_nomain.o: ${OBJECTDIR}/src/Network/ClientReadCallback.o src/Network/ClientReadCallback.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Network/ClientReadCallback.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/ClientReadCallback_nomain.o src/Network/ClientReadCallback.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Network/ClientReadCallback.o ${OBJECTDIR}/src/Network/ClientReadCallback_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Network/DisconnectClientCallback_nomain.o: ${OBJECTDIR}/src/Network/DisconnectClientCallback.o src/Network/DisconnectClientCallback.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Network
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Network/DisconnectClientCallback.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Network/DisconnectClientCallback_nomain.o src/Network/DisconnectClientCallback.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Network/DisconnectClientCallback.o ${OBJECTDIR}/src/Network/DisconnectClientCallback_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/Network/TcpNetworkServer_nomain.o: ${OBJECTDIR}/src/Network/TcpNetworkServer.o src/Network/TcpNetworkServer.cpp 
