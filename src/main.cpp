@@ -13,15 +13,13 @@
 
 // C++ includes
 #include "Core/GeneralState.hpp"
+#include "Core/NetworkThread.hpp"
 
 // C includes
 #include <assert.h>
 
 // Forward references
-namespace Core
-{
-void NetworkThread( GeneralState* pGeneralState );
-}
+// (none)
 
 /// <summary>Main entry point.</summary>
 /// <param name="argumentsCount">Number of input arguments.</param>
@@ -36,7 +34,9 @@ int main( int, char** )
 
     std::cout << "Creating threads..." << std::endl;
 
-    std::thread networkThread = std::thread( Core::NetworkThread, pGeneralState );
+    Core::NetworkThread& rNetworkThread = Core::NetworkThread::GetInstance();
+    auto threadHandle = rNetworkThread.GetThread();
+    std::thread networkThreadHandle( threadHandle, rNetworkThread, pGeneralState );
     
     std::cout << "Core processing..." << std::endl;
     
@@ -46,7 +46,7 @@ int main( int, char** )
     
     std::cout << "Closing threads..." << std::endl;
     
-    networkThread.join();
+    networkThreadHandle.join();
 
     std::cout << "Shutting down" << std::endl;
     
