@@ -60,8 +60,8 @@ TESTOBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -pthread
-CXXFLAGS=-Wall -pthread
+CCFLAGS=-Wall -pthread -lwiringPi
+CXXFLAGS=-Wall -pthread -lwiringPi
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -70,7 +70,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L/usr/lib -lwiringPi
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

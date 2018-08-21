@@ -8,6 +8,7 @@
 /////////////////////////////////////
 
 // System includes
+#include <wiringPi.h>
 #include <iostream>
 #include <thread>
 
@@ -27,6 +28,10 @@
 /// <returns>Exit result of the application.</returns>
 int main( int, char** )
 {
+    wiringPiSetup();
+    pinMode( 7, OUTPUT );
+    digitalWrite( 7, HIGH );
+    
     std::cout << "Starting..." << std::endl;
 
     Core::GeneralState* pGeneralState = new Core::GeneralState();

@@ -63,9 +63,14 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-Wall -pthread</commandLine>
+          <commandLine>-Wall -pthread -lwiringPi</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>wiringPi</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <folder path="TestFiles">
         <ccTool>
@@ -161,7 +166,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-Wall -pthread</commandLine>
+          <commandLine>-Wall -pthread -lwiringPi</commandLine>
           <warningLevel>3</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -170,6 +175,14 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>wiringPi</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <folder path="TestFiles/f1">
         <cTool>
