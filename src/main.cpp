@@ -8,13 +8,13 @@
 /////////////////////////////////////
 
 // System includes
-#include <wiringPi.h>
 #include <iostream>
 #include <thread>
 
 // C++ includes
 #include "Core/GeneralState.hpp"
-#include "Core/NetworkThread.hpp"
+#include "Core/Threads/NetworkThread.hpp"
+#include "Core/Threads/MotionThread.hpp"
 
 // C includes
 #include <assert.h>
@@ -28,10 +28,6 @@
 /// <returns>Exit result of the application.</returns>
 int main( int, char** )
 {
-    wiringPiSetup();
-    pinMode( 7, OUTPUT );
-    digitalWrite( 7, HIGH );
-    
     std::cout << "Starting..." << std::endl;
 
     Core::GeneralState* pGeneralState = new Core::GeneralState();
@@ -39,9 +35,11 @@ int main( int, char** )
 
     std::cout << "Creating threads..." << std::endl;
 
-    Core::NetworkThread& rNetworkThread = Core::NetworkThread::GetInstance();
-    auto threadHandle = rNetworkThread.GetThread();
-    std::thread networkThreadHandle( threadHandle, rNetworkThread, pGeneralState );
+    const Core::Threads::NetworkThread& rNetworkThread = Core::Threads::NetworkThread::GetInstance();
+    std::thread networkThreadHandle( rNetworkThread.GetThread(), rNetworkThread, pGeneralState );
+    
+    const Core::Threads::MotionThread& rMotionThread = Core::Threads::MotionThread::GetInstance();
+    std::thread motionThreadHandle( rMotionThread.GetThread(), rMotionThread, pGeneralState );
     
     std::cout << "Core processing..." << std::endl;
     
@@ -51,6 +49,7 @@ int main( int, char** )
     
     std::cout << "Closing threads..." << std::endl;
     
+    motionThreadHandle.join();
     networkThreadHandle.join();
 
     std::cout << "Shutting down" << std::endl;
