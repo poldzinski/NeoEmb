@@ -36,7 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/Core/GeneralState.o \
-	${OBJECTDIR}/src/Core/NetworkThread.o \
+	${OBJECTDIR}/src/Core/Threads/MotionThread.o \
+	${OBJECTDIR}/src/Core/Threads/NetworkThread.o \
 	${OBJECTDIR}/src/Network/AcceptClientCallback.o \
 	${OBJECTDIR}/src/Network/BaseNetworkServer.o \
 	${OBJECTDIR}/src/Network/BaseServerCallback.o \
@@ -85,10 +86,15 @@ ${OBJECTDIR}/src/Core/GeneralState.o: src/Core/GeneralState.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/GeneralState.o src/Core/GeneralState.cpp
 
-${OBJECTDIR}/src/Core/NetworkThread.o: src/Core/NetworkThread.cpp
-	${MKDIR} -p ${OBJECTDIR}/src/Core
+${OBJECTDIR}/src/Core/Threads/MotionThread.o: src/Core/Threads/MotionThread.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Core/Threads
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/NetworkThread.o src/Core/NetworkThread.cpp
+	$(COMPILE.cc) -g -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/Threads/MotionThread.o src/Core/Threads/MotionThread.cpp
+
+${OBJECTDIR}/src/Core/Threads/NetworkThread.o: src/Core/Threads/NetworkThread.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Core/Threads
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -Isrc -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/Threads/NetworkThread.o src/Core/Threads/NetworkThread.cpp
 
 ${OBJECTDIR}/src/Network/AcceptClientCallback.o: src/Network/AcceptClientCallback.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Network
@@ -156,17 +162,30 @@ ${OBJECTDIR}/src/Core/GeneralState_nomain.o: ${OBJECTDIR}/src/Core/GeneralState.
 	    ${CP} ${OBJECTDIR}/src/Core/GeneralState.o ${OBJECTDIR}/src/Core/GeneralState_nomain.o;\
 	fi
 
-${OBJECTDIR}/src/Core/NetworkThread_nomain.o: ${OBJECTDIR}/src/Core/NetworkThread.o src/Core/NetworkThread.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/Core
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Core/NetworkThread.o`; \
+${OBJECTDIR}/src/Core/Threads/MotionThread_nomain.o: ${OBJECTDIR}/src/Core/Threads/MotionThread.o src/Core/Threads/MotionThread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Core/Threads
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Core/Threads/MotionThread.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/NetworkThread_nomain.o src/Core/NetworkThread.cpp;\
+	    $(COMPILE.cc) -g -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/Threads/MotionThread_nomain.o src/Core/Threads/MotionThread.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/src/Core/NetworkThread.o ${OBJECTDIR}/src/Core/NetworkThread_nomain.o;\
+	    ${CP} ${OBJECTDIR}/src/Core/Threads/MotionThread.o ${OBJECTDIR}/src/Core/Threads/MotionThread_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/Core/Threads/NetworkThread_nomain.o: ${OBJECTDIR}/src/Core/Threads/NetworkThread.o src/Core/Threads/NetworkThread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/Core/Threads
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/Core/Threads/NetworkThread.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -Werror -Isrc -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Core/Threads/NetworkThread_nomain.o src/Core/Threads/NetworkThread.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/Core/Threads/NetworkThread.o ${OBJECTDIR}/src/Core/Threads/NetworkThread_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/Network/AcceptClientCallback_nomain.o: ${OBJECTDIR}/src/Network/AcceptClientCallback.o src/Network/AcceptClientCallback.cpp 

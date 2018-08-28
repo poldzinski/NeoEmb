@@ -5,10 +5,14 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="Core" displayName="Core" projectFiles="true">
+        <logicalFolder name="Threads" displayName="Threads" projectFiles="true">
+          <itemPath>src/Core/Threads/MotionThread.cpp</itemPath>
+          <itemPath>src/Core/Threads/MotionThread.hpp</itemPath>
+          <itemPath>src/Core/Threads/NetworkThread.cpp</itemPath>
+          <itemPath>src/Core/Threads/NetworkThread.hpp</itemPath>
+        </logicalFolder>
         <itemPath>src/Core/GeneralState.cpp</itemPath>
         <itemPath>src/Core/GeneralState.hpp</itemPath>
-        <itemPath>src/Core/NetworkThread.cpp</itemPath>
-        <itemPath>src/Core/NetworkThread.hpp</itemPath>
         <itemPath>src/Core/Thread.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="Network" displayName="Network" projectFiles="true">
@@ -98,11 +102,15 @@
       </item>
       <item path="src/Core/GeneralState.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Core/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/Core/Thread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/MotionThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/MotionThread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Network/AcceptClientCallback.cpp"
             ex="false"
@@ -203,11 +211,15 @@
       </item>
       <item path="src/Core/GeneralState.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Core/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/Core/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/Core/Thread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/MotionThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/MotionThread.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/NetworkThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Core/Threads/NetworkThread.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Network/AcceptClientCallback.cpp"
             ex="false"
